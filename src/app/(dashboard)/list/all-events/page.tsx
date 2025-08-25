@@ -39,14 +39,14 @@ export default async function EventListPage ({searchParams,
   searchParams: { [key: string]: string | undefined };
 }) {
 
-//     const { sessionClaims } = await auth();
+//      const { sessionClaims } = await auth();
 //   const role = (sessionClaims?.metadata as { role?: string })?.role;
 
     const renderCard = (event: EventList) => (
         <Link key={event.event_id} href={`/list/all-events/${event.event_id}`}>
             <div className="bg-slate-50 border border-gray-200 rounded-xl p-4 shadow hover:shadow-md transition">
                 <div className="mb-2">
-                <h2 className="text-lg font-semibold text-lamaPurpleDark">{event.title}</h2>
+                <h2 className="text-lg font-semibold text-[#7675b0]">{event.title}</h2>
                 <p className="text-sm text-gray-500">
                     Organised By: {event.organising_committee || "N/A"}
                 </p>
@@ -145,7 +145,7 @@ export default async function EventListPage ({searchParams,
                         <button className="w-8 h-8 flex items-center justify-center rounded-full bg-yellow-400">
                             <Image src="/sort.png" alt="Sort" width={14} height={14} />
                         </button>
-                        {role === "admin" && <FormModal table="event" type="create" />}
+                        {/* {role === "admin" && <FormModal table="event" type="create" />} */}
                     </div>
                 </div>
             </div>

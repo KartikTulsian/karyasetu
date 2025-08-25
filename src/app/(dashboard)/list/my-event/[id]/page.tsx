@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
-import SingleEventClient from "./SingleEventClient";
+import SingleEventClient from "../../all-events/[id]/SingleEventClient";
 
 const eventWithRelations = Prisma.validator<Prisma.EventDefaultArgs>()({
   include: {
@@ -14,7 +14,7 @@ const eventWithRelations = Prisma.validator<Prisma.EventDefaultArgs>()({
 
 type EventWithRelations = Prisma.EventGetPayload<typeof eventWithRelations>;
 
-export default async function SingleEventPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function SingleUserEventPage({ params }: { params: Promise<{ id: string }> }) {
 
   const { id } = await params;
 

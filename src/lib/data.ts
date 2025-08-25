@@ -852,7 +852,7 @@ export const eventsData = [
   },
 ];
 
-export const announcementsData = [
+export const offersData = [
   {
     id: 1,
     title: "About 4A Math Test",

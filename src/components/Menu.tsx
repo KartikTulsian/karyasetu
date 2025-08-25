@@ -1,7 +1,6 @@
 
 'use client';
 
-import { role } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,9 +9,9 @@ const menuItems = [
     title: "MENU",
     items: [
       {
-        icon: "/home.png",
-        label: "Home",
-        href: "/",
+        icon: "/profile.png",
+        label: "Profile",
+        href: "/admin",
       },
       {
         icon: "/result.png",
@@ -21,37 +20,29 @@ const menuItems = [
       },
       {
         icon: "/calendar.png",
-        label: "Events",
-        children: [
-          {
-            label: "All Events",
-            href: "/list/all-events",
-          },
-          {
-            label: "Create Event",
-            href: "/list/create-events",
-          },
-          {
-            label: "My Events",
-            href: "/list/my-event",
-          },
-        ],
+        label: "All Events",
+        href: "/list/all-events",
+      },
+      {
+        icon: "/create_events.png",
+        label: "Create Event",
+        href: "/list/create-events",
+      },
+      {
+        icon: "/calendar.png",
+        label: "My Events",
+        href: "/list/my-event",
       },
       {
         icon: "/announcement.png",
-        label: "Announcements",
-        href: "/list/announcements",
+        label: "Offers",
+        href: "/list/offers",
       },
     ],
   },
   {
     title: "OTHER",
     items: [
-      {
-        icon: "/profile.png",
-        label: "Profile",
-        href: "/profile",
-      },
       {
         icon: "/setting.png",
         label: "Settings",
@@ -78,28 +69,28 @@ const Menu = () => {
           {section.items.map((item) => {
             // if (!item.visible.includes(role)) return null;
 
-            if (item.children) {
-              // Item has submenu
-              return (
-                <div key={item.label}>
-                  <div className="flex items-center gap-4 text-gray-700 font-medium py-2 px-2">
-                    <Image src={item.icon} alt="" width={20} height={20} />
-                    <span className="hidden lg:block">{item.label}</span>
-                  </div>
-                  <div className="ml-10 flex flex-col gap-1 text-gray-500">
-                    {item.children.map((child) => (
-                      <Link
-                        href={child.href}
-                        key={child.label}
-                        className="py-1 px-2 rounded-md hover:bg-lamaSkyLight"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              );
-            }
+            // if (item.children) {
+            //   // Item has submenu
+            //   return (
+            //     <div key={item.label}>
+            //       <div className="flex items-center gap-4 text-gray-700 font-medium py-2 px-2">
+            //         <Image src={item.icon} alt="" width={20} height={20} />
+            //         <span className="hidden lg:block">{item.label}</span>
+            //       </div>
+            //       <div className="ml-10 flex flex-col gap-1 text-gray-500">
+            //         {item.children.map((child) => (
+            //           <Link
+            //             href={child.href}
+            //             key={child.label}
+            //             className="py-1 px-2 rounded-md hover:bg-lamaSkyLight"
+            //           >
+            //             {child.label}
+            //           </Link>
+            //         ))}
+            //       </div>
+            //     </div>
+            //   );
+            // }
 
             // Regular item
             return (
