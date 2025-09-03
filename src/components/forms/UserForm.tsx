@@ -103,7 +103,7 @@ const UserForm = ({
             setOpen(false);
             router.refresh();
         }
-    }, [state, router, type, setOpen]);
+    }, [state, router, type, setOpen, hasShownSuccessToast]);
 
     return (
         <form className="flex flex-col gap-8" onSubmit={onSubmit}>

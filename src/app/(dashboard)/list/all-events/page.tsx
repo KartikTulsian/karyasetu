@@ -25,9 +25,10 @@ type EventList = {
 
 export default async function EventListPage({ searchParams,
 }: {
-    searchParams: { [key: string]: string | undefined };
+    searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
 
+    const sp = await searchParams;
     //      const { sessionClaims } = await auth();
     //   const role = (sessionClaims?.metadata as { role?: string })?.role;
 
@@ -86,7 +87,7 @@ export default async function EventListPage({ searchParams,
     };
 
 
-    const { page, ...queryParams } = await searchParams;
+    const { page, ...queryParams } = sp;
 
     const p = page ? parseInt(page) : 1;
 

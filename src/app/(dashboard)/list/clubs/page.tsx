@@ -7,32 +7,28 @@ import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import ClubsDetailsModelServer from "./ClubsDetailsModelServer";
 
-export default async function ClubsListPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | undefined };
-}) {
-  const params = await searchParams;
-  const { page, clubId, ...queryParams } = params;
-  const p = page ? parseInt(page) : 1;
+export default async function ClubsListPage() {
+  // const params = await searchParams;
+  // const { page, clubId, ...queryParams } = params;
+  const p = 1;
 
   const query: Prisma.ClubWhereInput = {};
 
-  if (queryParams) {
-    for (const [key, value] of Object.entries(queryParams)) {
-      if (value !== undefined) {
-        switch (key) {
-          case "name":
-          case "search":
-            query.name = { contains: value, mode: "insensitive" };
-            break;
-          case "college_name":
-            query.college_name = { contains: value, mode: "insensitive" };
-            break;
-        }
-      }
-    }
-  }
+  // if (queryParams) {
+  //   for (const [key, value] of Object.entries(queryParams)) {
+  //     if (value !== undefined) {
+  //       switch (key) {
+  //         case "name":
+  //         case "search":
+  //           query.name = { contains: value, mode: "insensitive" };
+  //           break;
+  //         case "college_name":
+  //           query.college_name = { contains: value, mode: "insensitive" };
+  //           break;
+  //       }
+  //     }
+  //   }
+  // }
 
   const [clubs, count] = await prisma.$transaction([
     prisma.club.findMany({
@@ -49,16 +45,16 @@ export default async function ClubsListPage({
     prisma.club.count({ where: query }),
   ]);
 
-  const selectedClub = clubId
-    ? await prisma.club.findUnique({
-        where: { club_id: clubId },
-        include: {
-          eventLinks: {
-            include: { event: true },
-          },
-        },
-      })
-    : null;
+  // const selectedClub = clubId
+  //   ? await prisma.club.findUnique({
+  //       where: { club_id: clubId },
+  //       include: {
+  //         eventLinks: {
+  //           include: { event: true },
+  //         },
+  //       },
+  //     })
+  //   : null;
 
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
@@ -107,7 +103,7 @@ export default async function ClubsListPage({
         ))}
       </div>
 
-      <Pagination page={p} count={count} />
+      {/* <Pagination page={p} count={count} /> */}
 
       {/* <div className="fixed bottom-6 right-5 z-[1000]">
         <div className="h-12 w-12 rounded-full bg-[#FAE27C] text-black flex items-center justify-center shadow-lg hover:bg-blue-500 transition">
@@ -115,12 +111,12 @@ export default async function ClubsListPage({
         </div>
       </div> */}
 
-      {selectedClub && (
+      {/* {selectedClub && (
         <ClubsDetailsModelServer
           club={selectedClub}
           onCloseUrl={`/list/clubs?page=${p}`}
         />
-      )}
+      )} */}
     </div>
   );
 }

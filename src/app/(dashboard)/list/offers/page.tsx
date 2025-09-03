@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Pagination from "@/components/Pagination";
 
-export default async function OffersListPage({ searchParams }: { searchParams: { [key: string]: string | undefined } }) {
+export default async function OffersListPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
   const params = await searchParams;
   const { page, offerId, ...queryParams } = params;
   const p = page ? parseInt(page) : 1;

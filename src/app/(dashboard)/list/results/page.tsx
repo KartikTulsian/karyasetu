@@ -10,7 +10,7 @@ import ResultListModalServer from "./ResultListModalServer";
 export default async function ResultListPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | undefined };
+  searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
 
   

@@ -66,7 +66,7 @@ export default function ParticipationForm({ type, data, setOpen, eventId }: Prop
       setOpen(false);
       router.refresh();
     }
-  }, [state, router, setOpen, type, reset]);
+  }, [state, router, setOpen, type, reset, hasShownSuccessToast]);
 
   return (
     <form className="flex flex-col gap-8" onSubmit={onSubmit}>

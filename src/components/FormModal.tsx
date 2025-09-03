@@ -86,7 +86,7 @@ export default function FormModal({ table, type, data, id, relatedData }: FormCo
         setOpen(false);
         router.refresh();
       }
-    }, [state]);
+    }, [state, router]);
 
     return type === "delete" && id ? (
       <form

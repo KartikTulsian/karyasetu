@@ -38,28 +38,28 @@ const menuItems = [
         label: "Offers",
         href: "/list/offers",
       },
-      {
-        icon: "/clubs.png",
-        label: "Clubs",
-        href: "/list/clubs",
-      },
+      // {
+      //   icon: "/clubs.png",
+      //   label: "Clubs",
+      //   href: "/list/clubs",
+      // },
     ],
   },
-  {
-    title: "OTHER",
-    items: [
-      {
-        icon: "/setting.png",
-        label: "Settings",
-        href: "/settings",
-      },
-      {
-        icon: "/logout.png",
-        label: "Logout",
-        href: "/logout",
-      },
-    ],
-  },
+  // {
+  //   title: "OTHER",
+  //   items: [
+  //     {
+  //       icon: "/setting.png",
+  //       label: "Settings",
+  //       href: "/settings",
+  //     },
+  //     {
+  //       icon: "/logout.png",
+  //       label: "Logout",
+  //       href: "/logout",
+  //     },
+  //   ],
+  // },
 ];
 
 const Menu = () => {

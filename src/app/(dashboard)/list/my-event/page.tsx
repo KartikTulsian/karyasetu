@@ -1,19 +1,20 @@
 import FormContainer from '@/components/FormContainer';
 import Pagination from '@/components/Pagination';
-import TableSearch from '@/components/TableSearch';
 import prisma from '@/lib/prisma';
 import { ITEM_PER_PAGE } from '@/lib/settings';
 import { currentUser } from '@clerk/nextjs/server';
 import { Event, Prisma, Offer } from '@prisma/client';
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 export default async function MyEventsPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | undefined };
+  searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
+
+  const sp = await searchParams;
+
   const clerkUser = await currentUser();
   if (!clerkUser) {
     throw new Error('Not authenticated');
@@ -33,8 +34,7 @@ export default async function MyEventsPage({
   if (!dbUser) {
     throw new Error('User record not found in database');
   }
-
-  const sp = searchParams;
+  
   const activeTab = sp.tab === 'participated' ? 'participated' : 'created';
 
   const page = sp.page ? parseInt(sp.page) : 1;

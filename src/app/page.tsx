@@ -1,5 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -156,7 +158,7 @@ export default function Home() {
               className="p-6 border rounded-2xl shadow-sm bg-gradient-to-br from-blue-50 to-pink-50"
             >
               <div className="flex items-center gap-3 mb-3">
-                <img src={t.img} alt={t.name} className="w-10 h-10 rounded-full" />
+                <Image src={t.img} alt={t.name} className="w-10 h-10 rounded-full" />
                 <div>
                   <p className="font-semibold text-blue-600">{t.name}</p>
                   <p className="text-yellow-500 text-sm">★★★★★</p>
@@ -211,9 +213,9 @@ export default function Home() {
       <footer className="bg-gray-900 text-gray-300 py-8 text-center space-y-2">
         <p className="text-sm">© {new Date().getFullYear()} Karyasetu. All rights reserved.</p>
         <div className="flex justify-center gap-6 text-sm">
-          <a href="/about" className="hover:text-white">About</a>
-          <a href="/contact" className="hover:text-white">Contact</a>
-          <a href="/privacy" className="hover:text-white">Privacy Policy</a>
+          <Link href="/about" className="hover:text-white">About</Link>
+          <Link href="/contact" className="hover:text-white">Contact</Link>
+          <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
         </div>
       </footer>
     </main>

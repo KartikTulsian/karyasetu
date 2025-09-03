@@ -63,7 +63,7 @@ export default function ClubForm({
             setOpen(false);
             router.refresh();
         }
-    }, [state]);
+    }, [state, router, setOpen, type]);
 
     return (
         <form className="flex flex-col gap-8" onSubmit={onSubmit}>

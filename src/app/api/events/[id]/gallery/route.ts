@@ -1,15 +1,18 @@
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request, { params }: { params: { id: string } }) {
+export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+
+    const {id} = await params;
+
     const { media_url, media_type } = await req.json();
 
     const uploadedBy = "replace-with-user-id";
 
     const newMedia = await prisma.eventGallery.create({
       data: {
-        event_id: params.id,
+        event_id: id,
         media_url,
         media_type,
         uploaded_by: uploadedBy,

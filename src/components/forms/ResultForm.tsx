@@ -79,7 +79,7 @@ export default function ResultForm({ type, data, setOpen, relatedData }: Props) 
       setOpen(false);
       router.refresh();
     }
-  }, [state]);
+  }, [state, router, setOpen, type, reset, hasShownSuccessToast]);
 
   return (
     <form className="flex flex-col gap-6" onSubmit={onSubmit}>
