@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma'
 import { currentUser } from '@clerk/nextjs/server'
-import { GroupType } from '@/generated/prisma';
+import { GroupType } from '@prisma/client';
 import Link from 'next/link';
 import React from 'react'
 
