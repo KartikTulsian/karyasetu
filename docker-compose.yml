@@ -24,7 +24,7 @@ services:
     depends_on:
       - db
     command: >
-      sh -c "npx prisma migrate deploy && npm start"
+      sh -c "npx prisma migrate deploy && npx prisma db seed && npm start"
 
 volumes:
   db_data:
