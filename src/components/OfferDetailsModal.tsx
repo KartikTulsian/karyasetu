@@ -1,8 +1,13 @@
 "use client";
 
-import { Offer, User, Event, OfferType, GroupType } from "@prisma/client";
+import { Offer, User, Event } from "@prisma/client";
 import Image from "next/image";
 import { useEffect } from "react";
+import FormContainer from "./FormContainer";
+
+// const FormContainerWrapper = dynamic(() => import("./FormContainerWrapper"), {
+//   ssr: true,
+// });
 
 type OfferWithRelations = Offer & {
   creator: User;
@@ -45,6 +50,14 @@ export default function OfferDetailsModal({
           />
           <div>
             <h2 className="text-2xl font-bold text-white">{offer.title}</h2>
+            <div>
+            <div className="">
+              <FormContainer table='offer' type='update'/> 
+            </div>
+            <div className="">
+              <FormContainer table='offer' type='delete'/> 
+            </div>
+          </div>
             <p className="text-white/80 text-sm">
               Offered by <span className="font-medium">{offer.creator.name}</span> ({offer.creator.email})
             </p>

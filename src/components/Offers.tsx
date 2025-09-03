@@ -10,56 +10,56 @@ export default async function Offers() {
   // const role = (sessionClaims?.metadata as { role?: string })?.role;
 
   const clerkUser = await currentUser();
-  
+
   if (!clerkUser) {
     throw new Error("Not authenticated");
   }
 
   const dbUser = await prisma.user.findUnique({
-      where: { email: clerkUser.emailAddresses[0].emailAddress },
-      select: {
-        user_id: true,
-        college_name: true,
-        participations: {
-          select: {
-            event_id: true
-          }
+    where: { email: clerkUser.emailAddresses[0].emailAddress },
+    select: {
+      user_id: true,
+      college_name: true,
+      participations: {
+        select: {
+          event_id: true
         }
-      },
-    });
+      }
+    },
+  });
 
-    if (!dbUser) return <div>User not found</div>;
+  if (!dbUser) return <div>User not found</div>;
 
-    const participatedEventIds = dbUser.participations.map(p => p.event_id);
+  const participatedEventIds = dbUser.participations.map(p => p.event_id);
 
-    const whereConditions: any[] = [
-      { target_group_type: GroupType.ALL }
-    ];
+  const whereConditions: any[] = [
+    { target_group_type: GroupType.ALL }
+  ];
 
-    if (dbUser.college_name) {
-      whereConditions.push({
-        target_group_type: GroupType.COLLEGE,
-        target_college_name: {
-          equals: dbUser.college_name,
-          mode: 'insensitive'
-        }
-      });
-    }
-
-    if (participatedEventIds.length > 0) {
-      whereConditions.push({
-        target_group_type: GroupType.EVENT_PARTICIPANTS,
-        target_event_id: { in: participatedEventIds }
-      });
-    }
-
-    const offers = await prisma.offer.findMany({
-      take: 3,
-      orderBy: { created_at: 'desc' },
-      where: {
-        OR: whereConditions
+  if (dbUser.college_name) {
+    whereConditions.push({
+      target_group_type: GroupType.COLLEGE,
+      target_college_name: {
+        equals: dbUser.college_name,
+        mode: 'insensitive'
       }
     });
+  }
+
+  if (participatedEventIds.length > 0) {
+    whereConditions.push({
+      target_group_type: GroupType.EVENT_PARTICIPANTS,
+      target_event_id: { in: participatedEventIds }
+    });
+  }
+
+  const offers = await prisma.offer.findMany({
+    take: 3,
+    orderBy: { created_at: 'desc' },
+    where: {
+      OR: whereConditions
+    }
+  });
 
   return (
     <div className="bg-white p-4 rounded-md">
@@ -74,13 +74,12 @@ export default async function Offers() {
           <Link
             key={offer.offer_id}
             href={`/list/offers?offerId=${offer.offer_id}`}
-            className={`rounded-md p-4 block ${
-              idx === 0
+            className={`rounded-md p-4 block ${idx === 0
                 ? 'bg-[#e3f8ff]'
                 : idx === 1
-                ? 'bg-[#e0defa]'
-                : 'bg-[#fcf8da]'
-            }`}
+                  ? 'bg-[#e0defa]'
+                  : 'bg-[#fcf8da]'
+              }`}
           >
             <div className="flex items-center justify-between">
               <h2 className="font-medium">{offer.title}</h2>

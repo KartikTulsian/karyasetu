@@ -5,7 +5,7 @@ type InputFieldProps = {
   type?: string;
   register: any;
   name: string;
-  defaultValue?: string;
+  defaultValue?: string | number;
   error?: FieldError;
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
 };
@@ -24,8 +24,8 @@ const InputField = ({
       <label className="text-xs text-gray-500">{label}</label>
       <input
         type={type}
-        {...register(name)}
-        className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
+        {...register(name, type === "number" ? { valueAsNumber: true } : {})}
+        className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full text-black" 
         {...inputProps}
         defaultValue={defaultValue}
       />

@@ -13,6 +13,9 @@ CREATE TYPE "public"."GroupType" AS ENUM ('ALL', 'COLLEGE', 'EVENT_PARTICIPANTS'
 -- CreateEnum
 CREATE TYPE "public"."MediaType" AS ENUM ('IMAGE', 'VIDEO');
 
+-- CreateEnum
+CREATE TYPE "public"."EventCategory" AS ENUM ('TECHNICAL', 'CULTURAL', 'SEMINAR', 'WORKSHOP', 'SPORTS', 'HACKATHON', 'QUIZ', 'DRAMATICS', 'MUSIC', 'DANCE', 'LITERARY', 'ART', 'MANAGEMENT', 'SOCIAL');
+
 -- CreateTable
 CREATE TABLE "public"."User" (
     "user_id" TEXT NOT NULL,
@@ -41,12 +44,13 @@ CREATE TABLE "public"."Event" (
     "organising_committee" TEXT,
     "entry_fee" DOUBLE PRECISION,
     "registration_link" TEXT,
+    "use_custom_form" BOOLEAN NOT NULL DEFAULT false,
     "poster_url" TEXT,
     "max_team_size" INTEGER,
     "registration_deadline" TIMESTAMP(3),
     "event_status" "public"."EventStatus" NOT NULL,
     "visibility" "public"."Visibility" NOT NULL,
-    "category_id" TEXT NOT NULL,
+    "category" "public"."EventCategory" NOT NULL,
     "organiser_user_id" TEXT NOT NULL,
 
     CONSTRAINT "Event_pkey" PRIMARY KEY ("event_id")
@@ -118,14 +122,6 @@ CREATE TABLE "public"."EventGallery" (
 );
 
 -- CreateTable
-CREATE TABLE "public"."Category" (
-    "category_id" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
-
-    CONSTRAINT "Category_pkey" PRIMARY KEY ("category_id")
-);
-
--- CreateTable
 CREATE TABLE "public"."Club" (
     "club_id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
@@ -146,9 +142,6 @@ CREATE TABLE "public"."EventClubMapping" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "public"."User"("email");
-
--- CreateIndex
-CREATE INDEX "Event_category_id_idx" ON "public"."Event"("category_id");
 
 -- CreateIndex
 CREATE INDEX "Event_organiser_user_id_idx" ON "public"."Event"("organiser_user_id");
@@ -172,19 +165,10 @@ CREATE INDEX "Offer_created_by_idx" ON "public"."Offer"("created_by");
 CREATE INDEX "Result_event_id_idx" ON "public"."Result"("event_id");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Category_name_key" ON "public"."Category"("name");
-
--- CreateIndex
 CREATE UNIQUE INDEX "EventClubMapping_event_id_club_id_key" ON "public"."EventClubMapping"("event_id", "club_id");
 
 -- AddForeignKey
 ALTER TABLE "public"."Event" ADD CONSTRAINT "Event_organiser_user_id_fkey" FOREIGN KEY ("organiser_user_id") REFERENCES "public"."User"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "public"."Event" ADD CONSTRAINT "Event_category_id_fkey" FOREIGN KEY ("category_id") REFERENCES "public"."Category"("category_id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "public"."EventParticipation" ADD CONSTRAINT "EventParticipation_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "public"."User"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "public"."EventParticipation" ADD CONSTRAINT "EventParticipation_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."Event"("event_id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -193,10 +177,13 @@ ALTER TABLE "public"."EventParticipation" ADD CONSTRAINT "EventParticipation_eve
 ALTER TABLE "public"."EventParticipation" ADD CONSTRAINT "EventParticipation_team_id_fkey" FOREIGN KEY ("team_id") REFERENCES "public"."Team"("team_id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."Team" ADD CONSTRAINT "Team_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."Event"("event_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "public"."EventParticipation" ADD CONSTRAINT "EventParticipation_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "public"."User"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "public"."Team" ADD CONSTRAINT "Team_created_by_fkey" FOREIGN KEY ("created_by") REFERENCES "public"."User"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "public"."Team" ADD CONSTRAINT "Team_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."Event"("event_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "public"."Offer" ADD CONSTRAINT "Offer_created_by_fkey" FOREIGN KEY ("created_by") REFERENCES "public"."User"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -205,10 +192,10 @@ ALTER TABLE "public"."Offer" ADD CONSTRAINT "Offer_created_by_fkey" FOREIGN KEY 
 ALTER TABLE "public"."Offer" ADD CONSTRAINT "Offer_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."Event"("event_id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."Result" ADD CONSTRAINT "Result_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."Event"("event_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "public"."Result" ADD CONSTRAINT "Result_announced_by_fkey" FOREIGN KEY ("announced_by") REFERENCES "public"."User"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."Result" ADD CONSTRAINT "Result_announced_by_fkey" FOREIGN KEY ("announced_by") REFERENCES "public"."User"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "public"."Result" ADD CONSTRAINT "Result_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."Event"("event_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "public"."EventGallery" ADD CONSTRAINT "EventGallery_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."Event"("event_id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -217,7 +204,7 @@ ALTER TABLE "public"."EventGallery" ADD CONSTRAINT "EventGallery_event_id_fkey" 
 ALTER TABLE "public"."EventGallery" ADD CONSTRAINT "EventGallery_uploaded_by_fkey" FOREIGN KEY ("uploaded_by") REFERENCES "public"."User"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."EventClubMapping" ADD CONSTRAINT "EventClubMapping_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."Event"("event_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "public"."EventClubMapping" ADD CONSTRAINT "EventClubMapping_club_id_fkey" FOREIGN KEY ("club_id") REFERENCES "public"."Club"("club_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."EventClubMapping" ADD CONSTRAINT "EventClubMapping_club_id_fkey" FOREIGN KEY ("club_id") REFERENCES "public"."Club"("club_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "public"."EventClubMapping" ADD CONSTRAINT "EventClubMapping_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."Event"("event_id") ON DELETE RESTRICT ON UPDATE CASCADE;

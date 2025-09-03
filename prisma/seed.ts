@@ -1,22 +1,24 @@
 // prisma/seed.ts
 
-import { PrismaClient, EventStatus, Visibility, GroupType, OfferType, MediaType } from '@prisma/client';
+import { PrismaClient, EventStatus, Visibility, GroupType, OfferType, MediaType, EventCategory } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
   console.log("🌱 Starting KaryaSetu Seed...");
 
   // Create Categories
-  const categories = await prisma.category.createMany({
-    data: [
-      { name: "Technical" },
-      { name: "Cultural" },
-      { name: "Seminar" },
-      { name: "Hackathon" },
-    ],
-  });
+  // const categories = await prisma.category.createMany({
+  //   data: [
+  //     { name: "Technical" },
+  //     { name: "Cultural" },
+  //     { name: "Seminar" },
+  //     { name: "Hackathon" },
+  //   ],
+  // });
 
-  const allCategories = await prisma.category.findMany();
+  // const allCategories = await prisma.category.findMany();
+
+  const categories = Object.values(EventCategory);
 
   // Create Clubs
   const clubs = await prisma.club.createMany({
@@ -62,13 +64,14 @@ async function main() {
         organising_committee: `Committee ${i + 1}`,
         entry_fee: i % 2 === 0 ? 100 : 0,
         registration_link: `https://register.event${i + 1}.com`,
+        use_custom_form: false,
         poster_url: null,
         max_team_size: i % 2 === 0 ? 5 : null,
         registration_deadline: new Date(Date.now() + i * 86400000 - 86400000),
         event_status: i % 2 === 0 ? EventStatus.UPCOMING : EventStatus.ONGOING,
         visibility: i % 2 === 0 ? Visibility.PUBLIC : Visibility.COLLEGE,
         organiser_user_id: users[i % users.length].user_id,
-        category_id: allCategories[i % allCategories.length].category_id,
+        category: categories[i % categories.length],
       },
     });
     events.push(event);

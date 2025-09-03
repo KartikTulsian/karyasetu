@@ -4,19 +4,26 @@ import EventCalendar from "@/components/EventCalendar";
 import Offers from "@/components/Offers";
 import Image from "next/image";
 import ActivityChart from "@/components/ActivityChart";
-
+import { redirect } from "next/navigation";
+import FormContainer from "@/components/FormContainer";
 
 export default async function AdminPage() {
-
   const clerkUser = await currentUser();
 
+  // No clerk user → back to sign-in
   if (!clerkUser) {
-    throw new Error("Not authenticated");
+    redirect("/sign-in");
   }
 
-  // Fetch user with participation & organised events count
+  const email = clerkUser.emailAddresses[0]?.emailAddress;
+
+  // No email → back to sign-in
+  if (!email) {
+    redirect("/sign-in");
+  }
+
   const dbUser = await prisma.user.findUnique({
-    where: { email: clerkUser.emailAddresses[0].emailAddress },
+    where: { email },
     include: {
       participations: true,
       organisedEvents: true,
@@ -27,10 +34,37 @@ export default async function AdminPage() {
     },
   });
 
+  // If the user doesn’t exist in DB → show profile creation form instead of redirect
   if (!dbUser) {
-    throw new Error("User record not found in database");
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-50">
+        <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-2xl">
+          <h2 className="text-3xl font-bold text-center text-gray-800">
+            Welcome 🎉
+          </h2>
+          <p className="text-gray-600 text-center mt-2 mb-8">
+            Let’s set up your profile to unlock your Admin Dashboard.
+          </p>
+
+          {/* Profile Form */}
+          
+
+          {/* Action Button */}
+          <div className="flex justify-end mt-6">
+            <div
+              className="h-12 w-47 rounded-2xl bg-[#FAE27C] text-black flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+            >
+              <FormContainer table="user" type="create" data={{ email }} />
+              Create Profile
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
+
+  // If DB user exists → show admin dashboard
   const participatedCount = dbUser.participations.length;
   const organisedCount = dbUser.organisedEvents.length;
   const teamsCount = dbUser.createdTeams.length;
@@ -45,7 +79,7 @@ export default async function AdminPage() {
         {/* Bio */}
         <div className="bg-[#C3EBFA] p-6 rounded-lg shadow-md flex flex-col lg:flex-row gap-6">
           {/* Profile Picture */}
-          <div className="flex justify-center lg:justify-start"> 
+          <div className="flex justify-center lg:justify-start">
             <Image
               src={dbUser.profile_pic_url || "/avatar.png"}
               alt="profile_pic"
@@ -59,14 +93,18 @@ export default async function AdminPage() {
           <div className="flex-1 flex flex-col gap-4">
             {/* Name & Bio */}
             <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-gray-800 text-center lg:text-left">{dbUser.name}</h1>
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-800 text-center lg:text-left">
+                {dbUser.name}
+              </h1>
               <p className="text-sm text-gray-600 mt-1 text-centre lg:text-left">
                 {dbUser.bio || "No bio available"}
               </p>
             </div>
 
             {/* Info Grid */}
-            <h3 className="text-orange-600 text-sm font-semibold">Personal Info : </h3>
+            <h3 className="text-orange-600 text-sm font-semibold">
+              Personal Info :
+            </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-medium">
               <div className="flex items-center gap-2">
                 <Image src="/college.png" alt="" width={25} height={25} />
@@ -74,7 +112,9 @@ export default async function AdminPage() {
               </div>
               <div className="flex items-center gap-2">
                 <Image src="/course.png" alt="" width={25} height={25} />
-                <span className="text-gray-800">{dbUser.course} (Year {dbUser.year})</span>
+                <span className="text-gray-800">
+                  {dbUser.course} (Year {dbUser.year})
+                </span>
               </div>
               <div className="flex items-center gap-2 break-all">
                 <Image src="/mail.png" alt="" width={18} height={18} />
@@ -88,7 +128,9 @@ export default async function AdminPage() {
               )}
             </div>
 
-            <h3 className="text-orange-600 text-sm font-semibold">Your Stats : </h3>
+            <h3 className="text-orange-600 text-sm font-semibold">
+              Your Stats :
+            </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {[
                 {
@@ -137,25 +179,26 @@ export default async function AdminPage() {
           </div>
         </div>
 
-        {/* MIDDLE CHARTS */}
-        {/* <div className="flex gap-4 flex-col lg:flex-row">
-          <div className="w-full lg:w-1/3 h-[450px]">
-            <CountChart />
-          </div>
-          <div className="w-full lg:w-2/3 h-[450px]">
-            <AttendanceChart />
-          </div>
-        </div> */}
         {/* BOTTOM CHART */}
         <div className="w-full h-[500px]">
           <ActivityChart />
         </div>
       </div>
+
       {/* RIGHT */}
       <div className="w-full lg:w-1/3 flex flex-col gap-8">
         <EventCalendar />
         <Offers />
+
+        <div className="fixed bottom-6 right-5 z-[1000]">
+          <div
+            className='h-12 w-47 rounded-2xl bg-[#8286ff] text-white flex items-center justify-center gap-2 shadow-lg cursor-pointer'
+          >
+            <FormContainer table="user" type="update" data={dbUser} id={dbUser.user_id} />Update User
+          </div>
+        </div>
       </div>
+
     </div>
   );
-};
+}

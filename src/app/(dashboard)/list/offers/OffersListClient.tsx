@@ -42,7 +42,9 @@ export default function OffersListClient({
       onClick={() => setSelectedOffer(offer)}
     >
       <div className="mb-2">
-        <h2 className="text-lg font-semibold text-lamaPurpleDark">{offer.title}</h2>
+        <div className="flex flex-row justify-between">
+          <h2 className="text-lg font-semibold text-[#5e5e85]">{offer.title}</h2>
+        </div>
         <p className="text-sm text-gray-500">Offered By: {offer.creator.name}</p>
       </div>
       <div className="text-sm text-gray-600 space-y-1">
@@ -58,8 +60,8 @@ export default function OffersListClient({
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
       {/* TOP */}
       <div className="flex items-center justify-between flex-wrap gap-4">
-        <h1 className="text-lg font-semibold">All offers</h1>
-        <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
+        <h1 className="lg:text-xl text-lg font-semibold">All offers</h1>
+        {/* <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           <TableSearch />
           <div className="flex items-center gap-4 self-end">
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-yellow-400">
@@ -68,8 +70,9 @@ export default function OffersListClient({
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-yellow-400">
               <Image src="/sort.png" alt="Sort" width={14} height={14} />
             </button>
+            
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* CARD GRID */}
