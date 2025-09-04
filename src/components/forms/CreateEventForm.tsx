@@ -92,7 +92,7 @@ export default function CreateEventForm({
       gallery: gallery.map((g) => (typeof g === "string" ? g : g.secure_url)), // send array of image URLs
       // ...(type === "update" && data?.event_id && { event_id: data.event_id }),
       clubs: selectedClubs.map((c: any) => c.value),
-      
+
     };
 
     setHasShownSuccessToast(false);
@@ -346,7 +346,7 @@ export default function CreateEventForm({
           </select>
         </div> */}
 
-        <div className="flex flex-col gap-2 w-full md:w-1/3">
+        {/* <div className="flex flex-col gap-2 w-full md:w-1/3">
           <label className="text-sm font-medium text-gray-600">Associated Clubs</label>
 
           <CreatableSelect
@@ -368,8 +368,28 @@ export default function CreateEventForm({
             isClearable
             formatCreateLabel={() => null} // disables "create new" label
           />
-        </div>
+        </div> */}
 
+        {false && (
+          <div className="flex flex-col gap-2 w-full md:w-1/3">
+            <label className="text-sm font-medium text-gray-600">Associated Clubs</label>
+
+            <CreatableSelect
+              isMulti
+              options={relatedData?.clubs?.map((club: any) => ({
+                label: club.name,
+                value: club.club_id,
+              }))}
+              onChange={(selectedOptions: any) => {
+                setSelectedClubs(selectedOptions || []);
+              }}
+              value={selectedClubs}
+              placeholder="Select clubs..."
+              isClearable
+              formatCreateLabel={() => null}
+            />
+          </div>
+        )}
 
 
       </div>

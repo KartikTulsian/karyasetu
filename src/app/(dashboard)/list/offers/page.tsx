@@ -73,7 +73,7 @@ export default async function OffersListPage({ searchParams }: { searchParams: P
         </div> */}
       </div>
 
-      <div className="grid grid-cols-3 sm:grid-col-2 md:grid-cold-3 gap-6 mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
         {offers.map((offer) => (
           <Link
             key={offer.offer_id}
@@ -82,12 +82,21 @@ export default async function OffersListPage({ searchParams }: { searchParams: P
           >
             <div className="bg-slate-50 border border-gray-200 rounded-xl p-4 shadow hover:shadow-md transition cursor-pointer">
               <div className="mb-2">
-                <h2 className="text-lg font-semibold text-[#5e5e85] mb-2">{offer.title}</h2>
-                <p className="text-sm text-gray-500">Offered By: {offer.creator.name}</p>
+                <h2 className="text-lg font-semibold text-[#5e5e85] mb-2">
+                  {offer.title}
+                </h2>
+                <p className="text-sm text-gray-500">
+                  Offered By: {offer.creator.name}
+                </p>
               </div>
               <div className="text-sm text-gray-600 space-y-1">
                 <p>Event: {offer.event?.title}</p>
-                <p>Date: {new Intl.DateTimeFormat("en-US").format(new Date(offer.created_at))}</p>
+                <p>
+                  Date:{" "}
+                  {new Intl.DateTimeFormat("en-US").format(
+                    new Date(offer.created_at)
+                  )}
+                </p>
                 <p>Group: {offer.target_group_type}</p>
                 <p>Referred College: {offer.target_college_name}</p>
               </div>
@@ -95,6 +104,7 @@ export default async function OffersListPage({ searchParams }: { searchParams: P
           </Link>
         ))}
       </div>
+
 
       <Pagination page={p} count={count} />
 
