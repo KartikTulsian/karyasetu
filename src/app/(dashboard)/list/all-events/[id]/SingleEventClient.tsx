@@ -104,7 +104,7 @@ export default function SingleEventClient({ event }: { event: EventWithRelations
                                 <Detail
                                     image="/group.png"
                                     label="Max Team Size"
-                                    value={event.max_team_size.toString()}
+                                    value={event.max_team_size === 0 ? "Individual Only" : event.max_team_size.toString()}
                                 />
                             )}
                             <Detail image="/status.png" label="Status" value={event.event_status} />
