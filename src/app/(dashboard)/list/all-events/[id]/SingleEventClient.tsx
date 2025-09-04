@@ -99,6 +99,14 @@ export default function SingleEventClient({ event }: { event: EventWithRelations
                                     value={new Date(event.registration_deadline).toLocaleDateString()}
                                 />
                             )}
+
+                            {event.max_team_size && (
+                                <Detail
+                                    image="/group.png"
+                                    label="Max Team Size"
+                                    value={new Date(event.max_team_size).toLocaleDateString()}
+                                />
+                            )}
                             <Detail image="/status.png" label="Status" value={event.event_status} />
                             <Detail image="/visibility.png" label="Visibility" value={event.visibility} />
                         </div>

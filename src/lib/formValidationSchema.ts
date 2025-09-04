@@ -51,6 +51,15 @@ export const eventSchema = z.object({
 
   organiser_user_id: z.string().min(1, { message: "Organiser is required!" }),
   clubs: z.array(z.string()).optional(), // For club mapping
+})
+.refine((data) => {
+  if (!data.registration_deadline) return true; // skip if not provided
+  const deadline = new Date(data.registration_deadline);
+  const eventDate = new Date(data.date);
+  return deadline <= eventDate;
+}, {
+  message: "Registration deadline cannot exceed the event date",
+  path: ["registration_deadline"], // attach error to that field
 });
 
 export type EventSchema = z.infer<typeof eventSchema>;
