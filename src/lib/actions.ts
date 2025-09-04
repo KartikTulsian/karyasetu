@@ -693,7 +693,11 @@ export const createParticipation = async (
     // Remove duplicate IDs
     memberUserIds = Array.from(new Set(memberUserIds));
 
-    if (parsed.max_team_size && memberUserIds.length > parsed.max_team_size) {
+    if (
+      parsed.max_team_size !== undefined &&
+      parsed.max_team_size !== 0 &&
+      memberUserIds.length > parsed.max_team_size
+    ) {
       return {
         success: false,
         error: `Team cannot have more than ${parsed.max_team_size} members.`,
@@ -749,7 +753,25 @@ export const updateParticipation = async (
           },
         });
       }
+
+      if (
+        parsed.max_team_size !== undefined &&
+        parsed.max_team_size !== 0
+      ) {
+        const existingMembers = await prisma.eventParticipation.count({
+          where: { team_id: existingParticipation?.team_id },
+        });
+
+        if (existingMembers > parsed.max_team_size) {
+          return {
+            success: false,
+            error: `Team already has ${existingMembers} members, which exceeds the new limit of ${parsed.max_team_size}.`,
+          };
+        }
+      }
+
     }
+
 
     // Update participation itself
     await prisma.eventParticipation.update({
