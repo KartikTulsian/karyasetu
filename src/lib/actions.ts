@@ -243,7 +243,7 @@ export const updateEvent = async (
 
 
 export const deleteEvent = async (
-  currentState: CurrentState, 
+  currentState: CurrentState,
   data: FormData
 ) => {
   const event_id = data.get("event_id") as string;
@@ -251,27 +251,27 @@ export const deleteEvent = async (
     // Delete child records first
     await prisma.eventGallery.deleteMany({ where: { event_id } });
     await prisma.eventClubMapping.deleteMany({ where: { event_id } });
-    await prisma.eventParticipation.deleteMany({ 
-      where: { event_id } 
+    await prisma.eventParticipation.deleteMany({
+      where: { event_id }
     });
 
-    await prisma.team.deleteMany({ 
-      where: { event_id } 
+    await prisma.team.deleteMany({
+      where: { event_id }
     });
-    
+
     // Delete offers
-    await prisma.offer.deleteMany({ 
-      where: { event_id } 
+    await prisma.offer.deleteMany({
+      where: { event_id }
     });
-    
+
     // Delete results
-    await prisma.result.deleteMany({ 
-      where: { event_id } 
+    await prisma.result.deleteMany({
+      where: { event_id }
     });
 
     // Finally delete the event
-    await prisma.event.delete({ 
-      where: { event_id } 
+    await prisma.event.delete({
+      where: { event_id }
     });
 
     return { success: true, error: false };
@@ -693,7 +693,14 @@ export const createParticipation = async (
     // Remove duplicate IDs
     memberUserIds = Array.from(new Set(memberUserIds));
 
-    // ✅ Create participation for all team members including leader
+    if (parsed.max_team_size && memberUserIds.length > parsed.max_team_size) {
+      return {
+        success: false,
+        error: `Team cannot have more than ${parsed.max_team_size} members.`,
+      };
+    }
+
+
     await prisma.eventParticipation.createMany({
       data: memberUserIds.map((uid) => ({
         user_id: uid,

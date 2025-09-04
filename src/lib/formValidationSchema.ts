@@ -138,7 +138,13 @@ export const participationTeamSchema = z.object({
 .refine((data) => {
   // If creating a team or user is team leader, team_name and max_team_size are required
   if (data.is_team_leader || data.create_team) {
-    return !!data.team_name && !!data.max_team_size;
+    if (data.max_team_size) {
+      const emails = data.member_emails
+        ? data.member_emails.split(",").map((e) => e.trim()).filter(Boolean)
+        : [];
+      const teamCount = 1 + emails.length; // leader + members
+      return teamCount <= data.max_team_size;
+    }
   }
   return true;
 }, {

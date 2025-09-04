@@ -104,7 +104,7 @@ export default function SingleEventClient({ event }: { event: EventWithRelations
                                 <Detail
                                     image="/group.png"
                                     label="Max Team Size"
-                                    value={new Date(event.max_team_size).toLocaleDateString()}
+                                    value={event.max_team_size.toString()}
                                 />
                             )}
                             <Detail image="/status.png" label="Status" value={event.event_status} />
