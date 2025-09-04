@@ -129,7 +129,7 @@ export const createEvent = async (
         organising_committee: data.organising_committee || null,
         ...(data.poster_url && { poster_url: data.poster_url }),
         entry_fee: data.entry_fee,
-        max_team_size: data.max_team_size,
+        max_team_size: data.max_team_size || null,
         registration_link: data.use_custom_form ? null : data.registration_link || null,
         use_custom_form: data.use_custom_form ?? false,
         registration_deadline: data.registration_deadline ? new Date(data.registration_deadline) : null,
