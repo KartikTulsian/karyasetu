@@ -201,7 +201,7 @@ export default function Home() {
         <p className="mt-4">Join thousands of students making events unforgettable with Karyasetu.</p>
         <div className="mt-8">
           <button
-            onClick={() => router.push("/auth")}
+            onClick={() => router.push("/sign-in")}
             className="bg-white text-blue-600 font-semibold px-8 py-3 rounded-full shadow-md hover:bg-gray-100 transition hover:scale-105"
           >
             Get Started Free →
