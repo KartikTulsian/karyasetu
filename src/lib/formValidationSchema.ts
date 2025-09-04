@@ -136,9 +136,8 @@ export const participationTeamSchema = z.object({
     }, { message: "Please enter valid comma-separated emails" }),
 })
 .refine((data) => {
-  // If creating a team or user is team leader, team_name and max_team_size are required
   if (data.is_team_leader || data.create_team) {
-    if (data.max_team_size) {
+    if (data.max_team_size !== undefined && data.max_team_size !== 0) {
       const emails = data.member_emails
         ? data.member_emails.split(",").map((e) => e.trim()).filter(Boolean)
         : [];
@@ -148,9 +147,25 @@ export const participationTeamSchema = z.object({
   }
   return true;
 }, {
-  message: "Team name and max team size are required when creating a team",
-  path: ["team_name"], // attach error to team_name (can also attach max_team_size if needed)
+  message: "Team cannot exceed the maximum team size",
+  path: ["max_team_size"],
 });
+// .refine((data) => {
+//   // If creating a team or user is team leader, team_name and max_team_size are required
+//   if (data.is_team_leader || data.create_team) {
+//     if (data.max_team_size) {
+//       const emails = data.member_emails
+//         ? data.member_emails.split(",").map((e) => e.trim()).filter(Boolean)
+//         : [];
+//       const teamCount = 1 + emails.length; // leader + members
+//       return teamCount <= data.max_team_size;
+//     }
+//   }
+//   return true;
+// }, {
+//   message: "Team name and max team size are required when creating a team",
+//   path: ["team_name"], // attach error to team_name (can also attach max_team_size if needed)
+// });
 
 // TypeScript type inferred from schema
 export type ParticipationTeamSchema = z.infer<typeof participationTeamSchema>;
