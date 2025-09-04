@@ -328,25 +328,25 @@ export default function SingleEventClient({ event }: { event: EventWithRelations
                         >
                             🚀 Register Now
                         </button>
-                    ) 
-                    
-                    : (
-                        event.use_custom_form && (
-                            // <Link
-                            //     href={event.registration_link}
-                            //     target="_blank"
-                            //     className="block text-center w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg font-semibold shadow-md hover:scale-[1.02] transition-transform"
-                            // >
-                            //     🚀 Register Now for KaryaSetu
-                            // </Link>
-                            <button
-                            onClick={() => setOpen(true)}
-                            className="block text-center w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-lg font-semibold shadow-md hover:scale-[1.02] transition-transform"
-                        >
-                            🚀 Register Now for Karyasetu
-                        </button>
-                        )
-                    )}
+                    )
+
+                        : (
+                            event.registration_link && (
+                                // <Link
+                                //     href={event.registration_link}
+                                //     target="_blank"
+                                //     className="block text-center w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg font-semibold shadow-md hover:scale-[1.02] transition-transform"
+                                // >
+                                //     🚀 Register Now for KaryaSetu
+                                // </Link>
+                                <button
+                                    onClick={() => setOpen(true)}
+                                    className="block text-center w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-lg font-semibold shadow-md hover:scale-[1.02] transition-transform"
+                                >
+                                    🚀 Register Now for Karyasetu
+                                </button>
+                            )
+                        )}
 
                     {/* Custom Form Modal */}
                     {open && (
