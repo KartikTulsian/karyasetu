@@ -75,9 +75,8 @@ export default async function EventCalendar() {
         ) : (
           <div className="flex flex-col gap-3">
             {createdEvents.map((event) => (
-              <Link
+              <div
                 key={event.event_id}
-                href={`/list/events/${event.event_id}`}
                 className="rounded-md p-3 bg-[#e3f8ff] hover:bg-[#d5f0fa] transition"
               >
                 <div className="flex items-center justify-between">
@@ -85,7 +84,7 @@ export default async function EventCalendar() {
                   <span className="text-gray-400 text-xs">{formatDate(event.date)}</span>
                 </div>
                 <p className="mt-1 text-gray-500 text-sm">{event.description}</p>
-              </Link>
+              </div>
             ))}
           </div>
         )}
@@ -104,9 +103,8 @@ export default async function EventCalendar() {
         ) : (
           <div className="flex flex-col gap-3">
             {participatedEvents.map((event) => (
-              <Link
+              <div
                 key={event.event_id}
-                href={`/list/events/${event.event_id}`}
                 className="rounded-md p-3 bg-[#fcf8da] hover:bg-[#f5f1c6] transition"
               >
                 <div className="flex items-center justify-between">
@@ -114,7 +112,7 @@ export default async function EventCalendar() {
                   <span className="text-gray-400 text-xs">{formatDate(event.date)}</span>
                 </div>
                 <p className="mt-1 text-gray-500 text-sm">{event.description}</p>
-              </Link>
+              </div>
             ))}
           </div>
         )}
