@@ -118,7 +118,7 @@ export default async function EventCalendar() {
                   <span className="text-gray-400 text-xs">{formatDate(event.date)}</span>
                 </div>
                 <p className="mt-1 text-gray-500 text-sm">
-                  {truncateDescription(event.description ?? "", 25)}
+                  {truncateDescription(event.description ?? "", 18)}
                 </p>
               </div>
             ))}
