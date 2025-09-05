@@ -12,6 +12,12 @@ function formatDate(date: Date) {
   }).format(date);
 }
 
+function truncateDescription(text: string, wordLimit: number = 25) {
+  const words = text.split(" ");
+  if (words.length <= wordLimit) return text;
+  return words.slice(0, wordLimit).join(" ") + " ...";
+}
+
 export default async function EventCalendar() {
   const clerkUser = await currentUser();
   if (!clerkUser) {
@@ -111,7 +117,9 @@ export default async function EventCalendar() {
                   <h1 className="font-semibold text-gray-700">{event.title}</h1>
                   <span className="text-gray-400 text-xs">{formatDate(event.date)}</span>
                 </div>
-                <p className="mt-1 text-gray-500 text-sm">{event.description}</p>
+                <p className="mt-1 text-gray-500 text-sm">
+                  {truncateDescription(event.description ?? "", 25)}
+                </p>
               </div>
             ))}
           </div>
