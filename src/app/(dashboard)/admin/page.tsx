@@ -159,7 +159,7 @@ export default async function AdminPage() {
                   label: "Media Uploaded",
                 },
                 {
-                  img: "/result.png",
+                  img: "/result_clr.png",
                   count: resultsCount,
                   label: "Results Announced",
                 },
