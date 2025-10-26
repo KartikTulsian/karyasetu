@@ -55,7 +55,6 @@ export default async function AdminPage() {
               className="h-12 w-47 rounded-2xl bg-[#FAE27C] text-black flex items-center justify-center gap-2 shadow-lg cursor-pointer"
             >
               <FormContainer table="user" type="create" data={{ email }} />
-              Create Profile
             </div>
           </div>
         </div>
@@ -194,7 +193,7 @@ export default async function AdminPage() {
           <div
             className='h-12 w-47 rounded-2xl bg-[#8286ff] text-white flex items-center justify-center gap-2 shadow-lg cursor-pointer'
           >
-            <FormContainer table="user" type="update" data={dbUser} id={dbUser.user_id} />Update User
+            <FormContainer table="user" type="update" data={dbUser} id={dbUser.user_id} />
           </div>
         </div>
       </div>

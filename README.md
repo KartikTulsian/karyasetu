@@ -316,8 +316,6 @@ docker-compose up -d
 
 **Developed by IEM Software Engineering Lab (PCCCS594)**
 
-- **Debayan De** (12023052004004) - Team Lead & Backend Developer
-- **Debosmita Ghosh** (12023052004035) - Full Stack Support & Documentation Lead
 - **Kartik Tulsian** (12023052004036) - Solution Architect & UI/UX Designer
 
 **Mentored by:**
@@ -326,28 +324,13 @@ docker-compose up -d
 
 **Institution:** Department of Information Technology, Institute of Engineering and Management
 
-## 🤝 Contributing
-
-We welcome contributions from the community! Here's how you can help:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-Please read our [Contributing Guidelines](CONTRIBUTING.md) for more details.
-
 ## 📄 License
 
 This project is part of an academic curriculum at IEM and is subject to institutional guidelines. For commercial use or licensing inquiries, please contact the team.
 
 ## 📞 Support & Contact
 
-- 📧 Email: [karyasetu@example.com]
-- 🐛 Issues: [GitHub Issues](https://github.com/your-username/karyasetu/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/your-username/karyasetu/discussions)
-- 📚 Documentation: [Wiki](https://github.com/your-username/karyasetu/wiki)
+- 📧 Email: [kartiktulsian05172gmail.com]
 
 ## 🙏 Acknowledgments
 
@@ -356,13 +339,6 @@ This project is part of an academic curriculum at IEM and is subject to institut
 - Cloudinary for media management
 - All contributors and testers
 - IEM faculty for guidance and support
-
-## 📊 Project Stats
-
-![GitHub stars](https://img.shields.io/github/stars/your-username/karyasetu?style=social)
-![GitHub forks](https://img.shields.io/github/forks/your-username/karyasetu?style=social)
-![GitHub issues](https://img.shields.io/github/issues/your-username/karyasetu)
-![GitHub license](https://img.shields.io/github/license/your-username/karyasetu)
 
 ## 📚 Learn More
 
