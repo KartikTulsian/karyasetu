@@ -102,6 +102,232 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 - **Package Manager**: npm / Yarn
 - **Code Quality**: ESLint + Prettier
 
+## 📱 Web Application Demonstration
+
+### 1. Landing Page - Hero Section
+<img src="screenshots/img1.png" width="800" alt="Landing Page">
+
+**Modern, Clean Homepage:**
+- "One Platform. Every College Event."
+- Discover, create, and celebrate college events like never before"
+
+---
+
+### 2. Sign In Page
+<img src="screenshots/img2.png" width="800" alt="Sign In">
+
+**Authentication Screen:**
+
+---
+
+### 3. Email Verification Screen
+<img src="screenshots/img3.png" width="800" alt="Email Verification">
+
+**Account Verification:**
+- Verify Your Email
+- Message will be sent
+- Verification Code input field
+- Clean, minimal security step
+- Ensures valid institutional emails
+- Part of signup flow for new users
+- Prevents spam and fake accounts
+
+---
+
+### 4. First-Time User Welcome
+<img src="screenshots/img4.png" width="800" alt="Welcome Screen">
+
+**Onboarding Screen:**
+- Welcome message
+- Yellow "+" button to begin profile setup
+- Guides new users to complete profile
+- Simple, encouraging onboarding experience
+
+---
+
+### 5. Create New User Profile
+<img src="screenshots/img5.png" width="800" alt="Create User">
+
+**Complete Profile Setup Form:**
+- Authentication Information
+- Comprehensive form for new user registration
+- Ensures complete profile data from start
+- Part of initial onboarding flow
+- Collects all necessary information at once
+
+---
+
+### 6. User Profile Dashboard
+<img src="screenshots/img6.png" width="800" alt="Profile Dashboard">
+
+**Personalized User Overview:**
+- Your Stats cards
+- Calendar widget
+- Activity graph at bottom showing organized vs participated events
+
+---
+
+### 7. Update User Profile Modal
+<img src="screenshots/im7.png" width="800" alt="Update Profile">
+
+**Profile Editing Interface:**
+- Modal overlay: "Update user"
+- Authentication Information section
+- Scrollable form with all profile fields
+
+---
+
+### 8. Profile with Activity Graph
+<img src="screenshots/img8.png" width="800" alt="Profile Activity">
+
+**User Activity Analytics:**
+- Activity graph showing monthly participation:
+- Visual representation of user engagement over time
+
+---
+
+### 9. Result Announcement Modal
+<img src="screenshots/img9.png" width="800" alt="Result Announcement">
+
+**Winner Declaration Screen:**
+- Clean, organized information hierarchy
+
+---
+
+### 10. All Events Grid View
+<img src="screenshots/img10.png" width="800" alt="All Events">
+
+**Event Discovery Dashboard:**
+- Grid layout showing events
+- Edit/delete icons for own events
+- Pagination at bottom
+
+---
+
+### 11. Event Details Page - Organizer View
+<img src="screenshots/img11.png" width="800" alt="Event Details">
+
+**Comprehensive Event Information:**
+- Large hero image with details of the events
+
+---
+
+### 12. Full Event Details Page with participants
+<img src="screenshots/img12.png" width="800" alt="Event Full Details">
+
+**Complete Event Information:**
+- Hero image
+- Event description section
+- Event Gallery section
+- "Registered Participants" with participants
+- Organizer contact
+
+---
+
+### 13. Event Registration - Team Creation
+<img src="screenshots/img13.png" width="800" alt="Event Registration">
+
+**Team Registration Form:**
+
+---
+
+### 14. Publish Result Dialog
+<img src="screenshots/img14.png" width="800" alt="Publish Result">
+
+**Winner Announcement Form:**
+- Modal: "Create result" | "Publish Result"
+- Result Text field (large textarea) for winner details
+- Appears over event details page
+- Simple, straightforward result publishing workflow
+
+---
+
+### 15. My Events - Created Tab
+<img src="screenshots/img15.png" width="800" alt="My Events Created">
+
+**Events I've Organized:**
+- Clean card-based layout
+- Option to view/edit created events
+
+---
+
+### 16. My Events - Participated Tab
+<img src="screenshots/img16.png" width="800" alt="My Events Participated">
+
+**Events I'm Attending:**
+- Shows events where user is registered as participant
+- Same clean layout as created events
+
+---
+
+### 17. All Offers Listing
+<img src="screenshots/img17.png" width="800" alt="All Offers">
+
+**Team Recruitment Hub:**
+- Helps students find team members across colleges
+
+---
+
+### 18. Offer Details Modal
+<img src="screenshots/img18.png" width="800" alt="Offer Details">
+
+**Team Recruitment Request:**
+- Clear call-out for required skills
+- Facilitates skill-based team formation
+
+---
+
+### 19. Create New Offer Modal
+<img src="screenshots/img19.png" width="800" alt="Create Offer">
+
+**Team Recruitment Form:**
+- Simple, focused form for posting recruitment needs
+- Helps organizers or participants find team members
+
+---
+
+### 20. User's Created Offer - Detailed View
+<img src="screenshots/img20.png" width="800" alt="User Offer Detail">
+
+**Personal Offer Management:**
+- User can manage their own posted offers
+
+---
+
+## 🎯 Key Features Demonstrated
+
+**Event Management:**
+- Create, edit, and delete events
+- Publish results with media
+- Track registrations and participants
+- Comprehensive event details page
+
+**User Experience:**
+- Clean, modern UI with consistent branding
+- Intuitive navigation and workflows
+- Real-time updates and notifications
+- Mobile-responsive design
+
+**Collaboration:**
+- Team recruitment offers
+- Cross-college participation
+- Skill-based matching
+- Event discovery across institutions
+
+**Security & Verification:**
+- Email verification
+- College authentication
+- Role-based access control
+- Profile completeness checks
+
+**Analytics & Tracking:**
+- Activity graphs
+- Participation statistics
+- Event performance metrics
+- Personal dashboards
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -291,17 +517,6 @@ docker-compose up -d
 - **Smooth Animations**: Framer Motion for delightful interactions
 - **Dark Mode**: (Coming soon) Enhanced viewing experience
 - **Accessibility**: WCAG 2.1 compliant design
-
-## 🔄 Development Workflow
-
-### Project Timeline
-- ✅ Feasibility Study & SRS (18 Jul - 01 Aug 2025)
-- 🔄 Design Documents (25 Jul - 08 Aug 2025)
-- 🔄 Development Phase (25 Jul - 22 Aug 2025)
-- ⏳ Implementation (08 Aug - 15 Aug 2025)
-- ⏳ Testing & Debugging (15 Aug - 22 Aug 2025)
-- ⏳ Quality Management (22 Aug - 29 Aug 2025)
-- ⏳ Deployment (29 Aug - 12 Sep 2025)
 
 ## 🌐 Future Enhancements
 
