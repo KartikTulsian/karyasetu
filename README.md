@@ -114,14 +114,14 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 2. Sign In Page
-<img src="screenshots/img2.png" width="800" alt="Sign In">
+<img src="public\screenshots\img2.png" width="700" height="300" alt="Sign In">
 
 **Authentication Screen:**
 
 ---
 
 ### 3. Email Verification Screen
-<img src="screenshots/img3.png" width="800" alt="Email Verification">
+<img src="public\screenshots\img3.png" width="700" height="300" alt="Email Verification">
 
 **Account Verification:**
 - Verify Your Email
@@ -135,7 +135,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 4. First-Time User Welcome
-<img src="screenshots/img4.png" width="800" alt="Welcome Screen">
+<img src="public\screenshots\img4.png" width="700" height="300" alt="Welcome Screen">
 
 **Onboarding Screen:**
 - Welcome message
@@ -146,7 +146,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 5. Create New User Profile
-<img src="screenshots/img5.png" width="800" alt="Create User">
+<img src="public\screenshots\img5.png" width="700" height="300" alt="Create User">
 
 **Complete Profile Setup Form:**
 - Authentication Information
@@ -158,7 +158,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 6. User Profile Dashboard
-<img src="screenshots/img6.png" width="800" alt="Profile Dashboard">
+<img src="public\screenshots\img6.png" width="700" height="300" alt="Profile Dashboard">
 
 **Personalized User Overview:**
 - Your Stats cards
@@ -168,7 +168,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 7. Update User Profile Modal
-<img src="screenshots/im7.png" width="800" alt="Update Profile">
+<img src="public\screenshots\im7.png" width="700" height="300" alt="Update Profile">
 
 **Profile Editing Interface:**
 - Modal overlay: "Update user"
@@ -178,7 +178,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 8. Profile with Activity Graph
-<img src="screenshots/img8.png" width="800" alt="Profile Activity">
+<img src="public\screenshots\img8.png" width="700" height="300" alt="Profile Activity">
 
 **User Activity Analytics:**
 - Activity graph showing monthly participation:
@@ -187,7 +187,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 9. Result Announcement Modal
-<img src="screenshots/img9.png" width="800" alt="Result Announcement">
+<img src="public\screenshots\img9.png" width="700" height="300" alt="Result Announcement">
 
 **Winner Declaration Screen:**
 - Clean, organized information hierarchy
@@ -195,7 +195,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 10. All Events Grid View
-<img src="screenshots/img10.png" width="800" alt="All Events">
+<img src="public\screenshots\img10.png" width="700" height="300" alt="All Events">
 
 **Event Discovery Dashboard:**
 - Grid layout showing events
@@ -205,7 +205,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 11. Event Details Page - Organizer View
-<img src="screenshots/img11.png" width="800" alt="Event Details">
+<img src="public\screenshots\img11.png" width="700" height="300" alt="Event Details">
 
 **Comprehensive Event Information:**
 - Large hero image with details of the events
@@ -213,7 +213,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 12. Full Event Details Page with participants
-<img src="screenshots/img12.png" width="800" alt="Event Full Details">
+<img src="public\screenshots\img12.png" width="700" height="300" alt="Event Full Details">
 
 **Complete Event Information:**
 - Hero image
@@ -225,14 +225,14 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 13. Event Registration - Team Creation
-<img src="screenshots/img13.png" width="800" alt="Event Registration">
+<img src="public\screenshots\img13.png" width="700" height="300" alt="Event Registration">
 
 **Team Registration Form:**
 
 ---
 
 ### 14. Publish Result Dialog
-<img src="screenshots/img14.png" width="800" alt="Publish Result">
+<img src="public\screenshots\img14.png" width="700" height="300" alt="Publish Result">
 
 **Winner Announcement Form:**
 - Modal: "Create result" | "Publish Result"
@@ -243,7 +243,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 15. My Events - Created Tab
-<img src="screenshots/img15.png" width="800" alt="My Events Created">
+<img src="public\screenshots\img15.png" width="700" height="300" alt="My Events Created">
 
 **Events I've Organized:**
 - Clean card-based layout
@@ -252,7 +252,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 16. My Events - Participated Tab
-<img src="screenshots/img16.png" width="800" alt="My Events Participated">
+<img src="public\screenshots\img16.png" width="700" height="300" alt="My Events Participated">
 
 **Events I'm Attending:**
 - Shows events where user is registered as participant
@@ -261,7 +261,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 17. All Offers Listing
-<img src="screenshots/img17.png" width="800" alt="All Offers">
+<img src="public\screenshots\img17.png" width="700" height="300" alt="All Offers">
 
 **Team Recruitment Hub:**
 - Helps students find team members across colleges
@@ -269,7 +269,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 18. Offer Details Modal
-<img src="screenshots/img18.png" width="800" alt="Offer Details">
+<img src="public\screenshots\img18.png" width="700" height="300" alt="Offer Details">
 
 **Team Recruitment Request:**
 - Clear call-out for required skills
@@ -278,7 +278,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 19. Create New Offer Modal
-<img src="screenshots/img19.png" width="800" alt="Create Offer">
+<img src="public\screenshots\img19.png" width="700" height="300" alt="Create Offer">
 
 **Team Recruitment Form:**
 - Simple, focused form for posting recruitment needs
@@ -287,7 +287,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ---
 
 ### 20. User's Created Offer - Detailed View
-<img src="screenshots/img20.png" width="800" alt="User Offer Detail">
+<img src="public\screenshots\img20.png" width="700" height="300" alt="User Offer Detail">
 
 **Personal Offer Management:**
 - User can manage their own posted offers
