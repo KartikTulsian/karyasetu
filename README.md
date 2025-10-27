@@ -105,7 +105,7 @@ KaryaSetu contributes to **UN Sustainable Development Goals**:
 ## 📱 Web Application Demonstration
 
 ### 1. Landing Page - Hero Section
-<img src="screenshots/img1.png" width="800" alt="Landing Page">
+<img src="public\screenshots\img1.png" width="800" alt="Landing Page">
 
 **Modern, Clean Homepage:**
 - "One Platform. Every College Event."
